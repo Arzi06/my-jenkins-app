@@ -32,7 +32,7 @@ then
     make push stage=$stagevar
 fi
 
-deploy image regardless of stage
+#deploy image regardless of stage
 cd pv-pvc
 make run stage=$stagevar
 cd ..
