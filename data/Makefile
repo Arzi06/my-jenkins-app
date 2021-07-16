@@ -15,5 +15,5 @@ push: login
 	@docker push $(image)
 
 deploy:
-	@cat back-secret.yaml | sed "s|NAMESPACE|$(namespace)|g" | kubectl apply -f -
+	@cat data-secret.yaml | sed "s|NAMESPACE|$(namespace)|g" | kubectl apply -f -
 	@cat back-deployment.yaml | sed "s|IMAGEVERSION|$(version)|g;s|NAMESPACE|$(namespace)|g;s|ACCOUNT|$(account)|g" | kubectl apply -f -
