@@ -7,6 +7,7 @@ metadata:
   labels:
     io.kompose.service: data-script
   name: data-script
+  namespace: NAMESPACE
 spec:
   replicas: 1
   selector:
@@ -25,13 +26,13 @@ spec:
     spec:
       initContainers:
       - name: init-sript
-        image: mif78/quotes-data-script:v2
+        image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/apiapp:IMAGEVERSION
         command: ['sh', '-c', "until mysql -h ${MYSQL_DB_HOST} -u ${MYSQL_USER} -p${MYSQL_USER_PASSWORD} -e 'show databases;'; do echo waiting for mydb; sleep 2; done"]
         envFrom:
         - secretRef:
             name: data-script-secret
       containers:
-      - image: mif78/quotes-data-script:v2
+      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/apiapp:IMAGEVERSION
         name: data-script
         envFrom:
         - secretRef:

@@ -1,3 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.20.0 (f3d54d784)
+  labels:
+    io.kompose.service: front
+  name: front
+  namespace: NAMESPACE
+spec:
+  type: NodePort
+  ports:
+  - port: 3001
+    targetPort: 3001
+    nodePort: 30001
+  selector:
+    io.kompose.service: front
+status:
+  loadBalancer: {}
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -7,6 +29,7 @@ metadata:
   labels:
     io.kompose.service: front
   name: front
+  namespace: NAMESPACE
 spec:
   replicas: 1
   selector:
@@ -24,7 +47,7 @@ spec:
         io.kompose.service: front
     spec:
       containers:
-      - image: mif78/quotes-front:v1
+      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/apiapp:IMAGEVERSION
         name: front
         ports:
         - containerPort: 3001

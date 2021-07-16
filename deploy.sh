@@ -1,12 +1,12 @@
 #!/bin/bash
 set -e
 
-if [ "$BRANCH_NAME" = "production" ]
+if [ "$BRANCH_NAME" = "prod" ]
 then
     stagevar=prod
 elif [ "$BRANCH_NAME" = "main" ]
 then
-    stagevar=staging
+    stagevar=main
 elif [ $BRANCH_NAME = "dev" ]
 then
     stagevar=dev
@@ -32,16 +32,19 @@ then
     make push stage=$stagevar
 fi
 
-# deploy image regardless of stage
-# cd back/
-# make deploy stage=$stagevar
-# cd ..
-# cd data/
-# make deploy stage=$stagevar
-# cd .. 
-# cd data-script/
-# make deploy stage=$stagevar
-# cd ..
-# cd front/
-# make deploy stage=$stagevar
-# cd .. 
+deploy image regardless of stage
+cd pv-pvc
+make run stage=$stagevar
+cd ..
+cd back/
+make deploy stage=$stagevar
+cd ..
+cd data/
+make deploy stage=$stagevar
+cd .. 
+cd data-script/
+make deploy stage=$stagevar
+cd ..
+cd front/
+make deploy stage=$stagevar
+cd .. 

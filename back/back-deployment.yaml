@@ -1,3 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.20.0 (f3d54d784)
+  labels:
+    io.kompose.service: back
+  name: api
+  namespace: NAMESPACE
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+  selector:
+    io.kompose.service: back
+status:
+  loadBalancer: {}
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -7,6 +27,7 @@ metadata:
   labels:
     io.kompose.service: back
   name: back
+  namespace: NAMESPACE
 spec:
   replicas: 1
   selector:
@@ -24,7 +45,7 @@ spec:
         io.kompose.service: back
     spec:
       containers:
-      - image: mif78/quotes-back:v2
+      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/apiapp:IMAGEVERSION
         name: api
         envFrom:
         - secretRef:
