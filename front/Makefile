@@ -1,7 +1,7 @@
 account = $(shell aws sts get-caller-identity --query "Account" --output text)
 stage = dev
 include ../stages/$(stage)
-image = $(account).dkr.ecr.us-east-1.amazonaws.com/frot:$(version)
+image = $(account).dkr.ecr.us-east-1.amazonaws.com/front:$(version)
 
 
 login:
