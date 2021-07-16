@@ -7,6 +7,7 @@ metadata:
   labels:
     io.kompose.service: front
   name: front
+  namespace: NAMESPACE
 spec:
   type: NodePort
   ports:
@@ -28,6 +29,7 @@ metadata:
   labels:
     io.kompose.service: front
   name: front
+  namespace: NAMESPACE
 spec:
   replicas: 1
   selector:
