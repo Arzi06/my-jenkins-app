@@ -45,7 +45,7 @@ spec:
         io.kompose.service: back
     spec:
       containers:
-      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/apiapp:IMAGEVERSION
+      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/back:IMAGEVERSION
         name: api
         envFrom:
         - secretRef:

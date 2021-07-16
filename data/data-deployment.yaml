@@ -49,7 +49,7 @@ spec:
         persistentVolumeClaim:
           claimName: data-pvc
       containers:
-      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/apiapp:IMAGEVERSION
+      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/data:IMAGEVERSION
         name: db
         volumeMounts:
         - mountPath: "/var/lib/mysql"

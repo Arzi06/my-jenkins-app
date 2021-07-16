@@ -7,7 +7,6 @@ metadata:
   labels:
     io.kompose.service: front
   name: front
-  namespace: NAMESPACE
 spec:
   type: NodePort
   ports:
@@ -29,7 +28,6 @@ metadata:
   labels:
     io.kompose.service: front
   name: front
-  namespace: NAMESPACE
 spec:
   replicas: 1
   selector:
@@ -47,7 +45,7 @@ spec:
         io.kompose.service: front
     spec:
       containers:
-      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/apiapp:IMAGEVERSION
+      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/front:IMAGEVERSION
         name: front
         ports:
         - containerPort: 3001

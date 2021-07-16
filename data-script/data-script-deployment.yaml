@@ -32,7 +32,7 @@ spec:
         - secretRef:
             name: data-script-secret
       containers:
-      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/apiapp:IMAGEVERSION
+      - image: ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/data-script:IMAGEVERSION
         name: data-script
         envFrom:
         - secretRef:
